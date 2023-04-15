@@ -3,40 +3,50 @@
 {% block content %}
 
 <div class='category-create'>
-  <div class="warning-box">
+  <div class="author-box">
     <div class="create-book-header">
 
       <h1>All Authors</h1>
 
     </div>
-
-    <div class="genre-container">
-      {% for author in authors %}
-      <div class="author-item">
-        <div class="author-info">
-          <div>{{ author.name }}</div>
-          <div>{{ author.country }}</div>
-          <div>{{ author.birth_year }}</div>
+    
+  
+    <div class="wrapper-author">
+        {% for author in authors %}
+        <div class="card">
+          <div class="author-image">
+            <a href="{% url 'authors:book' author.id %}">
+              <img
+              class="book-item-image"
+              src="https://assets.hirecream.com/avatar/user-avatar-placeholder.png"
+              alt=""
+              
+            /></a>
+            
+          </div>
+          <div class="book-details">
+            <h4><a href="https://assets.hirecream.com/avatar/user-avatar-placeholder.png"></a></h4>
+            <h4 class="touppercase">{{ author.name }}</h4>
+          </div>
+          <div>
+            <button class="handle-book-btn">
+              <a href="{% url 'authors:detail' pk=author.pk %}"> details</a>
+            </button>
+          </div>
         </div>
-        <div class="author-item-action">
-          <a href="{% url 'authors:detail' pk=author.pk %}" class="btn btn-primary">View</a>
-          <a href="{% url 'authors:update' pk=author.pk %}" class="btn btn-success">Edit</a>
-          <a href="{% url 'authors:book' author.id %}"> details</a>
-        </div>
-
-
-
+        {% empty %}
+        <p>No author yet.</p>
+        {% endfor %}
       </div>
-
-      {% empty %}
-      <p>No author yet.</p>
-      {% endfor %}
     </div>
-
+    {% if request.user.is_superuser %}
     <button class="handle-book-btn create-book-btn">
       <a href="{% url 'authors:create' %}" class="btn btn-primary">Add Author</a>
     </button>
+    {% endif %}
   </div>
 </div>
-</div>
+
+<div class="book-list"></div>
+
 {% endblock %}

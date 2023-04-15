@@ -46,6 +46,15 @@
                     <div class="header-btn-logout">
                         <a href="{% url 'users:logout'%}"> Logout</a>
                     </div>
+                    <div class="header-btn-register">
+                        <a href="/users/profile/">Profile </a>
+                    </div>
+                        {% if request.user.is_superuser %}
+                        <div class="header-btn-register">
+                            <a href="/users/all_users/">AllUsers </a>
+                        </div>
+                        {% endif %}
+
                     {% else %}
                     <div class="header-btn-login">
                         <a href="/users/login"> Login</a>
@@ -53,6 +62,7 @@
                     <div class="header-btn-register">
                         <a href="/users/register">Register </a>
                     </div>
+                    
                     {% endif %}
                 </div>
             </div>
@@ -74,21 +84,50 @@
                     </form>
                 </div>
                 <div class="margin-bottom-20">
-                    <div class="button-admin">{% if request.user.is_superuser %}
-                        <button class="handle-book-btn create-book-btn">
-                            <a href="{% url 'books:book_create' %}">Create New Book</a>
-                        </button>
-                        <button class="handle-book-btn create-book-btn">
-                            <a href="/authors/create/">Add New Author</a>
-                        </button>
-                        <button class="handle-book-btn create-book-btn">
-                            <a href="/genres/create/">Create New Genre</a>
-                        </button>
+                    <div  class="button-admin">
+                        {% if request.user.is_superuser %}
+                        <div>
+                            <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+                                <a href="{% url 'books:book_create' %}">Create New Book</a>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+                                <a href="/authors/create/">Add New Author</a>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+                                <a href="/genres/create/">Create New Genre</a>
+                            </button>
+                        </div>
+                        <div>
+                            <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+                                <a href="/orders/sales_report/">Sale Report</a>
+                            </button>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+                                <a href="/orders/sales_report_genre/">Sale Report Genre</a>
+                            </button>
+                        </div>
+                        
                         {% endif %}
+                    </div >
+                    <div class="button-user">
+                        <button class="handle-book-btn create-book-btn">
+                            <a href="/genres/">Genres</a>
+                        </button>
+                        <button class="handle-book-btn create-book-btn">
+                            <a href="/authors/">Authors</a>
+                        </button>
+                        <button style="width:160px" id="success-btn" class="handle-book-btn create-book-btn">
+                            <a href="/orders/">My Orders</a>
+                        </button>
                     </div>
-                    <button class="handle-book-btn create-book-btn">
-                        <a href="/genres/">Genres</a>
-                    </button>
                 </div>
             </div>
 

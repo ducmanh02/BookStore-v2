@@ -3,7 +3,14 @@
 {% block content %}
 
 
-<button class="handle-book-btn create-book-btn"><a href="{% url 'reviews:top_rated_books' %}" class="btn btn-secondary">TOP RATED <i class="fa-solid fa-explosion"></i></a></button>
+<div>
+  <button class="handle-book-btn create-book-btn"><a href="{% url 'reviews:top_rated_books' %}"
+      class="btn btn-secondary">TOP RATED <i class="fa-solid fa-explosion"></i></a></button>
+
+  <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
+    <a href="/orders/top_selling_books/">Top Selling Books</a>
+  </button>
+</div>
 <div class="book-list">
   <div class="book-list-title">
     <h1>Book List</h1>
@@ -14,13 +21,8 @@
       <div class="card">
         <div class="book-image">
           <a href="{% url 'books:book_detail' book.id %}">
-            <img
-            class="book-item-image"
-            src="{{ book.image.url}}"
-            alt="{{ book.title }}"
-            
-          /></a>
-          
+            <img class="book-item-image" src="{{ book.image.url}}" alt="{{ book.title }}" /></a>
+
         </div>
         <div class="book-details">
           <h4><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h4>
@@ -35,7 +37,7 @@
       {% endfor %}
     </div>
 
-    
+
   </div>
 </div>
 

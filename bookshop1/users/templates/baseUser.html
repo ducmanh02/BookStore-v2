@@ -46,6 +46,15 @@
                     <div class="header-btn-logout">
                         <a href="{% url 'users:logout'%}"> Logout</a>
                     </div>
+                    <div class="header-btn-register">
+                        <a href="/users/profile/">Profile </a>
+                    </div>
+                        {% if request.user.is_superuser %}
+                        <div class="header-btn-register">
+                            <a href="/users/all_users/">AllUsers </a>
+                        </div>
+                        {% endif %}
+
                     {% else %}
                     <div class="header-btn-login">
                         <a href="/users/login"> Login</a>

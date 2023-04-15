@@ -2,17 +2,30 @@
 
 {% block content %}
 
-<h1 class="mt-4">{{ book.title }}</h1>
-<p><strong>Author:</strong> {{ book.author.name }}</p>
-<p><strong>Genre:</strong> {{ book.genre.name }}</p>
-<p><strong>Description:</strong></p>
-<p>{{ book.description }}</p>
-<p><strong>Price:</strong> {{ book.price }}</p>
-<p><strong>Stock:</strong> {{ book.stock }}</p>
-  <h1>Create Review</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form>
+<div class='category-create'>
+  <div class="warning-box">
+    <div class="create-book-header">
+
+      <h1>{{ book.title }}</h1>
+
+    </div>
+    <div>
+      <p><strong>Author:</strong> {{ book.author.name }}</p>
+      <p><strong>Genre:</strong> {{ book.genre.name }}</p>
+      <p><strong>Description:</strong></p>
+      <p>{{ book.description }}</p>
+      <p><strong>Price:</strong> {{ book.price }}</p>
+      <p><strong>Stock:</strong> {{ book.stock }}</p>
+    </div>
+    <form id='create-form' method="post" enctype="multipart/form-data">
+
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button class='handle-book-btn' type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
 {% endblock %}

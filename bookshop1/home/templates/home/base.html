@@ -19,50 +19,61 @@
       <div class="header-logo">LOGO</div>
 
       <div class="header-menu">
-        <div class="header-menu-item actived">
-          <a id="actived" href="/">Home</a>
-        </div>
-        <div class="header-menu-item">
-          <a href="/books">Books</a>
-        </div>
-        <div class="header-menu-item">
-          <a href="#about-part">About</a>
-        </div>
-        <div class="header-menu-item">
-          <a href="#contact-part">Contact</a>
-        </div>
+          <div  class="header-menu-item">
+              <a id="actived" href="/">Home</a>
+          </div>
+          <div class="header-menu-item">
+              <a  href="/books">Books</a>
+          </div>
+          <div class="header-menu-item">
+              <a href="/#about-part">About</a>
+          </div>
+          <div class="header-menu-item">
+              <a href="/#contact-part">Contact</a>
+          </div>
       </div>
       <div class="header-icon">
-        <div class="header-icon-user">
-          <button onCLick="displayLogin()">
-            <i class="fa-solid fa-user"></i>
-          </button>
+          <div class="header-icon-user">
+              <button onCLick="displayLogin()">
+                  <i class="fa-solid fa-user"></i>
+              </button>
 
-          <div id="header-icon-user-display">
-            {% if user.is_authenticated %}
-              <div class="header-btn-logout">
-                <a href="{% url 'users:logout'%}"> Logout</a>
+              <div id="header-icon-user-display">
+                  {% if user.is_authenticated %}
+                  <div class="header-btn-logout">
+                      <a href="{% url 'users:logout'%}"> Logout</a>
+                  </div>
+                  <div class="header-btn-register">
+                      <a href="/users/profile/">Profile </a>
+                  </div>
+                      {% if request.user.is_superuser %}
+                      <div class="header-btn-register">
+                          <a href="/users/all_users/">AllUsers </a>
+                      </div>
+                      {% endif %}
+
+                  {% else %}
+                  <div class="header-btn-login">
+                      <a href="/users/login"> Login</a>
+                  </div>
+                  <div class="header-btn-register">
+                      <a href="/users/register">Register </a>
+                  </div>
+                  {% endif %}
               </div>
-              {% else %}
-              <div class="header-btn-login">
-                <a href="/users/login"> Login</a>
-              </div>
-              <div class="header-btn-register">
-                <a href="/users/register">Register </a>
-              </div>
-              {% endif %}
           </div>
-        </div>
-        <div class="header-icon-cart">
-          <a href="/carts/view"><i class="fa-solid fa-cart-shopping"></i></a>
-        </div>
+          <div class="header-icon-cart">
+              <a href="/carts/view"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
       </div>
-    </div>
+  </div>
+
+
 
     <div class="main">
       <div class="main-new">
         <div class="main-new-content">
-          <div><h3>New Release</h3></div>
+          <div><h3>Top Selling</h3></div>
           <div class="main-new-title">This Dark Road To Mercy</div>
           <div class="main-new-script">
             Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
@@ -122,23 +133,23 @@
             <div class='contact-right-title'>
               <h2>Send Us a Message</h2>
             </div>
-            <div class='contact-form'>
+            <div  class='contact-form'>
             
-              <input type='text' placeholder='Name'  />
-            </div>
-            <div class='contact-form'>
-            
-              <input type='text' placeholder='Phone Number' />
+              <input  type='text' placeholder='Name'  />
             </div>
             <div class='contact-form'>
             
-              <input type='text' placeholder='Email'  />
+              <input  type='text' placeholder='Phone Number' />
             </div>
             <div class='contact-form'>
-              <textarea placeholder='Message' name="" id="" cols="30" rows="10"></textarea>
+            
+              <input  type='text' placeholder='Email'  />
             </div>
             <div class='contact-form'>
-              <button class ='handle-book-btn' type='submit'> Submit</button>
+              <textarea  placeholder='Message' name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class='contact-form'>
+              <button   class ='handle-book-btn' type='submit'> Submit</button>
             </div>
           </div>
 
