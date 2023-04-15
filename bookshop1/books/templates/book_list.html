@@ -1,34 +1,48 @@
 {% extends 'baseBook.html' %}
 
 {% block content %}
-<td><a href="{% url 'reviews:top_rated_books' %}" class="btn btn-secondary">top_rated_books</a></td>
-  <h1>Book List</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
+
+
+<button class="handle-book-btn create-book-btn"><a href="{% url 'reviews:top_rated_books' %}" class="btn btn-secondary">TOP RATED <i class="fa-solid fa-explosion"></i></a></button>
+<div class="book-list">
+  <div class="book-list-title">
+    <h1>Book List</h1>
+  </div>
+  <div>
+    <div class="wrapper">
       {% for book in books %}
-        <tr>
-          <td>{{ book.title }}</td>
-          <td>{{ book.author.name }}</td>
-          <td>{{ book.genre.name }}</td>
-          <td>{{ book.price }}</td>
-          <td>{{ book.stock }}</td>
-          <td><a href="{% url 'books:book_detail' book.id %}" class="btn btn-primary">Detail</a></td>
-          <td><a href="{% url 'books:book_edit' book.id %}" class="btn btn-secondary">Edit</a></td>
-          <td><a href="{% url 'books:book_delete' book.id %}" class="btn btn-danger">Delete</a></td>
-          <td><a href="{% url 'cart:add_to_cart' book.id%} "> add to cart </a> </td>
-        </tr>
+      <div class="card">
+        <div class="book-image">
+          <a href="{% url 'books:book_detail' book.id %}">
+            <img
+            class="book-item-image"
+            src="{{ book.image.url}}"
+            alt="{{ book.title }}"
+            
+          /></a>
+          
+        </div>
+        <div class="book-details">
+          <h4><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h4>
+          <h4>{{ book.price }}đ</h4>
+        </div>
+        <div>
+          <button class="handle-book-btn">
+            <a href="{% url 'cart:add_to_cart' book.id %}">Add to cart </a>
+          </button>
+        </div>
+      </div>
       {% endfor %}
-    </tbody>
-  </table>
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+
+
+
+
 {% endblock %}
