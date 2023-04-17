@@ -36,6 +36,11 @@
             </div>
         </div>
         <div class="header-icon">
+            <div style="padding-top: 5px;padding-right: 5px;">
+                {% if user.is_authenticated %}
+                Hello, {{user.username}}
+                {% endif %}
+            </div>
             <div class="header-icon-user">
                 <button onCLick="displayLogin()">
                     <i class="fa-solid fa-user"></i>

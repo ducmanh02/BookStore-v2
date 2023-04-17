@@ -36,6 +36,11 @@
             </div>
         </div>
         <div class="header-icon">
+            <div style="padding-top: 5px;padding-right: 5px;">
+                {% if user.is_authenticated %}
+                Hello, {{user.username}}
+                {% endif %}
+            </div>
             <div class="header-icon-user">
                 <button onCLick="displayLogin()">
                     <i class="fa-solid fa-user"></i>
@@ -49,11 +54,11 @@
                     <div class="header-btn-register">
                         <a href="/users/profile/">Profile </a>
                     </div>
-                        {% if request.user.is_superuser %}
-                        <div class="header-btn-register">
-                            <a href="/users/all_users/">AllUsers </a>
-                        </div>
-                        {% endif %}
+                    {% if request.user.is_superuser %}
+                    <div class="header-btn-register">
+                        <a href="/users/all_users/">AllUsers </a>
+                    </div>
+                    {% endif %}
 
                     {% else %}
                     <div class="header-btn-login">
@@ -62,7 +67,7 @@
                     <div class="header-btn-register">
                         <a href="/users/register">Register </a>
                     </div>
-                    
+
                     {% endif %}
                 </div>
             </div>
@@ -84,7 +89,7 @@
                     </form>
                 </div>
                 <div class="margin-bottom-20">
-                    <div  class="button-admin">
+                    <div class="button-admin">
                         {% if request.user.is_superuser %}
                         <div>
                             <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
@@ -107,16 +112,16 @@
                             </button>
                         </div>
                         <div>
-                            
+
                         </div>
                         <div>
                             <button style="background-color: #6c757d;" class="handle-book-btn create-book-btn">
                                 <a href="/orders/sales_report_genre/">Sale Report Genre</a>
                             </button>
                         </div>
-                        
+
                         {% endif %}
-                    </div >
+                    </div>
                     <div class="button-user">
                         <button class="handle-book-btn create-book-btn">
                             <a href="/genres/">Genres</a>
