@@ -23,9 +23,10 @@
       <p>No genres yet.</p>
       {% endfor %}
     </div>
-
+    {% if request.user.is_superuser %}
     <button class="handle-book-btn create-book-btn">
       <a href="{% url 'genres:create' %}">Create a new genre</a>
+      {% endif %}
     </button>
   </div>
 </div>
