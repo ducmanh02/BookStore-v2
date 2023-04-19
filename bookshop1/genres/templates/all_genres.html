@@ -13,7 +13,7 @@
       {% for genre in genres %}
       <div class="genre-item">
         <p><a href="{% url 'genres:details' genre.pk %}">
-            <h4> {{ genre.name }} </h4>
+            <h4 class="limit-2"> {{ genre.name }} </h4>
           </a></p>
 
 

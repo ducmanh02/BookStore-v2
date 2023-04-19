@@ -30,7 +30,16 @@
 .book-details{
     text-align: center;
 }
-
+.book-review-item{
+    width: 100%;
+}
+.book-review-user{
+    width: 10%;
+}
+.book-review-content {
+    text-align: start;
+    width: 90%;
+}
 .book-details a{
     text-decoration: none;
     color: black;
@@ -203,7 +212,7 @@
 }
 .book-review-item{
     background-color: white;
-    width: 90%;
+    
     border-radius: 10px;
     padding: 20px;
     display: flex;

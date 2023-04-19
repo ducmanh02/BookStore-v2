@@ -6,12 +6,12 @@ from django.db.models import Sum
 from books.models import Book
 from django.contrib.auth.decorators import user_passes_test
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 def order_list(request):
     orders = Order.objects.filter(user=request.user).order_by('-date_created')
     return render(request, 'order_list.html', {'orders': orders})
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 def create_order(request):
     user = request.user
     cart_items = Cart.objects.filter(user=user)
@@ -31,7 +31,7 @@ def create_order(request):
         total_price += item.price
     return render(request, 'create_order.html', {'cart_items': cart_items,'total_price':total_price})
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 def order_detail(request, order_id):
     order = get_object_or_404(Order, pk=order_id, user=request.user)
     order_items = order.orderitem_set.all()
@@ -41,7 +41,7 @@ def top_selling_books(request):
     books = Book.objects.annotate(total_sold=Sum('orderitem__quantity')).order_by('-total_sold')[:10]
     return render(request, 'book_list.html', {'books': books,})
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 @user_passes_test(lambda user: user.is_superuser)
 def sales_report(request):
     confirmed_orders = Order.objects.filter(status=0)
@@ -73,7 +73,7 @@ def sales_report(request):
 
     return render(request, 'sales_report.html', context)
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 @user_passes_test(lambda user: user.is_superuser)
 def sales_report_genre(request):
     confirmed_orders = Order.objects.filter(status=0)
