@@ -25,8 +25,8 @@
 
         </div>
         <div class="book-details">
-          <h4><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h4>
-          <h4>{{ book.price }}đ</h4>
+          <h5 class="book-title limit-2"><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h5>
+          <h5>{{ book.price }}đ</h5>
         </div>
         <div>
           <button class="handle-book-btn">

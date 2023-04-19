@@ -19,7 +19,7 @@ def book_list(request):
     context = {'books': books}
     return render(request, 'book_list.html', context)
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 @user_passes_test(lambda user: user.is_superuser)
 def book_create(request):
     if request.method == 'POST':
@@ -39,7 +39,7 @@ def book_detail(request, pk):
     avg_rating = reviews.aggregate(Avg('rating'))['rating__avg']
     return render(request, 'book_detail.html', {'book': book, 'reviews': reviews, 'avg_rating': avg_rating})
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 @user_passes_test(lambda user: user.is_superuser)
 def book_edit(request, pk):
     book = get_object_or_404(Book, pk=pk)
@@ -53,7 +53,7 @@ def book_edit(request, pk):
     context = {'form': form}
     return render(request, 'book_edit.html', context)
 
-@login_required(login_url='User:login')
+@login_required(login_url='users:login')
 @user_passes_test(lambda user: user.is_superuser)
 def book_delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
